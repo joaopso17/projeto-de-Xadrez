@@ -1,2 +1,9 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using tabuleiro;
+using xadrez_console;
+
+Tabuleiro tab= new( 8, 8 ) ;
+
+Tela.imprimirTabuleiro(tab);
+
+
+
