@@ -1,6 +1,7 @@
 ﻿
 
 using System.Runtime.InteropServices;
+using xadrez;
 
 namespace tabuleiro
 {
@@ -37,6 +38,18 @@ namespace tabuleiro
             return peca(pos) != null;
         }
 
+        public Peca retiraPeca(Posicao pos)
+        {
+            if (peca(pos) == null)
+            {
+                return null;
+            }
+            Peca aux = peca(pos);
+            aux.posicao = null;
+            pecas[pos.linha, pos.coluna] = null;
+            return aux;
+        }
+
         public void colocarPeca(Peca p, Posicao pos)
         {
             if (existePeca(pos))
@@ -48,7 +61,7 @@ namespace tabuleiro
 
         }
 
-        public bool posicaoValida(Posicao pos)
+        public bool PosicaoValida(Posicao pos)
         {
             if (pos.linha < 0 || pos.linha >= linha || pos.coluna < 0 || pos.coluna >= coluna)
             {
@@ -59,7 +72,7 @@ namespace tabuleiro
 
         public void validarPosicao(Posicao pos)
         {
-            if (!posicaoValida(pos))
+            if (!PosicaoValida(pos))
             {
                 throw new TabuleiroExeption("Posição invalida!");
             }
