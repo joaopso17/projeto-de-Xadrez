@@ -10,21 +10,21 @@ namespace tabuleiro
         public int qteMovimentos { get; protected set; }
         public Tabuleiro tab { get; protected set; }
 
-  
-            public Peca(Tabuleiro tab, Cor cor)
-            {
-                this.posicao = null;
-                this.tab = tab;
-                this.cor = cor;
-                this.qteMovimentos = 0;
-            }
 
-        public bool existeMovimentosPossiveis ()
+        public Peca(Tabuleiro tab, Cor cor)
+        {
+            posicao = null;
+            this.tab = tab;
+            this.cor = cor;
+            qteMovimentos = 0;
+        }
+
+        public bool existeMovimentosPossiveis()
         {
             bool[,] mat = movimentosPossiveis();
-            for (int i = 0; i < tab.linha ; i++)
+            for (int i = 0; i < tab.linha; i++)
             {
-                for (int j = 0;j<tab.coluna ; j++)
+                for (int j = 0; j < tab.coluna; j++)
                 {
                     if (mat[i, j])
                     {
@@ -35,9 +35,9 @@ namespace tabuleiro
             return false;
         }
 
-        public bool podeMoverPara (Posicao pos)
+        public bool podeMoverPara(Posicao pos)
         {
-            return movimentosPossiveis()[pos.linha,pos.coluna];
+            return movimentosPossiveis()[pos.linha, pos.coluna];
         }
 
         public void incrementarQteMovimentos() => qteMovimentos++;
