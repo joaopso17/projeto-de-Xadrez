@@ -28,7 +28,7 @@ internal class Program
                     partida.ValidarPosicaoOrigem(origem);
 
                     bool[,] posicoesPossiveis = partida.tab.peca(origem).movimentosPossiveis();
-                   
+
                     Console.Clear();
                     Tela.imprimirTabuleiro(partida.tab, posicoesPossiveis);
 
@@ -39,14 +39,15 @@ internal class Program
 
                     partida.realizaJogada(origem, destino);
                 }
-                catch (TabuleiroExeption e) 
+                catch (TabuleiroExeption e)
                 {
                     Console.WriteLine(e.Message);
                     Console.ReadLine();
                 }
-                
-
             }
+            
+            Console.Clear();
+            Tela.imprimirPartida(partida);
         }
 
         catch (TabuleiroExeption ex)

@@ -64,13 +64,20 @@ namespace xadrez
                 desfazMovimeto(origem, destino, pecaCapturada);
                 throw new TabuleiroExeption("Não pode se colocar em Xeque!");
             }
-
             if (estaEmXeque(adversaria(jogadorDaVez)))
-            { Xeque = true; }
+            {
+                Xeque = true;
+            }
             else { Xeque = false; }
-
-            turno++;
-            trocaJogador();
+            if (!estaEmXequemate(adversaria(jogadorDaVez)))
+            {
+                terminada = true;
+            }
+            else
+            {
+                turno++;
+                trocaJogador();
+            }
         }
         public void ValidarPosicaoOrigem(Posicao pos)
         {
@@ -133,6 +140,34 @@ namespace xadrez
                 if (mat[R.posicao.linha, R.posicao.coluna]) { return true; }
             }
             return false;
+        }
+
+        public bool estaEmXequemate(Cor cor)
+        {
+            if (!estaEmXeque(cor))
+            {
+                return false;
+            }
+            foreach (Peca x in pecasEmJogo(cor))
+            {
+                bool[,] mat = x.movimentosPossiveis();
+                for (int i = 0; i < tab.linha; i++)
+                {
+                    for (int j = 0; j < tab.coluna; j++)
+                    {
+                        if (mat[i, j])
+                        {
+                            Posicao origem = x.posicao;
+                            Posicao destito = new Posicao(i, j);
+                            Peca pecaCapturadas = executaMovimento(origem, destito);
+                            bool testeXeque = estaEmXeque(cor);
+                            desfazMovimeto(origem, destito, pecaCapturadas);
+                            if (!testeXeque) { return false; }
+                        }
+                    }
+                }
+            }
+            return true;
         }
 
         private void trocaJogador()
