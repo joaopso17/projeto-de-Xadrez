@@ -33,7 +33,7 @@ namespace tabuleiro
 
         public bool existePeca(Posicao pos)
         {
-            validarPosicao(pos);
+            ValidarPosicao(pos);
 
             return peca(pos) != null;
         }
@@ -70,7 +70,7 @@ namespace tabuleiro
             return true;
         }
 
-        public void validarPosicao(Posicao pos)
+        public void ValidarPosicao(Posicao pos)
         {
             if (!PosicaoValida(pos))
             {
