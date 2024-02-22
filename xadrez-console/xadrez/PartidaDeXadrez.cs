@@ -69,7 +69,7 @@ namespace xadrez
                 Xeque = true;
             }
             else { Xeque = false; }
-            if (!estaEmXequemate(adversaria(jogadorDaVez)))
+            if (estaEmXequemate(adversaria(jogadorDaVez)))
             {
                 terminada = true;
             }
@@ -97,7 +97,7 @@ namespace xadrez
 
         public void ValidarPosicoaDestino(Posicao origem, Posicao destino)
         {
-            if (!tab.peca(origem).podeMoverPara(destino))
+            if (!tab.peca(origem).podeMovimentar(destino))
             {
                 throw new TabuleiroExeption("Posição de destino invalida!");
             }
@@ -215,18 +215,14 @@ namespace xadrez
         private void ColocarPecas()
         {
             colocarNovaPeca('c', 1, new Torre(tab, Cor.branca));
-            colocarNovaPeca('c', 2, new Torre(tab, Cor.branca));
+            colocarNovaPeca('h', 7, new Torre(tab, Cor.branca));
             colocarNovaPeca('d', 2, new Torre(tab, Cor.branca));
             colocarNovaPeca('e', 2, new Torre(tab, Cor.branca));
-            colocarNovaPeca('e', 1, new Torre(tab, Cor.branca));
             colocarNovaPeca('d', 1, new Rei(tab, Cor.branca));
 
-            colocarNovaPeca('c', 7, new Torre(tab, Cor.preta));
-            colocarNovaPeca('c', 8, new Torre(tab, Cor.preta));
-            colocarNovaPeca('d', 7, new Torre(tab, Cor.preta));
-            colocarNovaPeca('e', 7, new Torre(tab, Cor.preta));
-            colocarNovaPeca('e', 8, new Torre(tab, Cor.preta));
-            colocarNovaPeca('d', 8, new Rei(tab, Cor.preta));
+          
+            colocarNovaPeca('b', 8, new Torre(tab, Cor.preta));
+            colocarNovaPeca('a', 8, new Rei(tab, Cor.preta));
 
         }
 
