@@ -13,7 +13,6 @@ internal class Program
         {
             PartidaDeXadrez partida = new PartidaDeXadrez();
 
-
             while (!partida.terminada)
             {
                 try
@@ -49,7 +48,6 @@ internal class Program
             Console.Clear();
             Tela.imprimirPartida(partida);
         }
-
         catch (TabuleiroExeption ex)
         {
             Console.WriteLine(ex.Message);

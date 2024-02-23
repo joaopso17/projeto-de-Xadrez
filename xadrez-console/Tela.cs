@@ -18,9 +18,7 @@ namespace xadrez_console
             {
                 Console.WriteLine("Jogador da vez: " + partida.jogadorDaVez);
                 if (partida.Xeque)
-                {
-                    Console.WriteLine("XEQUE!");
-                }
+                { Console.WriteLine("XEQUE!"); }
             }
             else
             {
@@ -35,18 +33,20 @@ namespace xadrez_console
             Console.Write("Peças Brancas: ");
             imprimirConjunto(partida.pecasCapturadas(Cor.branca));
             Console.WriteLine();
+
             Console.Write("Peças Pretas: ");
+
             ConsoleColor aux = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.DarkBlue;
             imprimirConjunto(partida.pecasCapturadas(Cor.preta));
             Console.ForegroundColor = aux;
+
             Console.WriteLine();
         }
 
         public static void imprimirConjunto(HashSet<Peca> conjunto)
         {
-            Console.Write("[" +
-                "");
+            Console.Write("[" + "");
             foreach (Peca x in conjunto)
             {
                 Console.Write(x + " ");
@@ -72,7 +72,7 @@ namespace xadrez_console
                 {
                     imprimirPeca(tab.peca(i, j));
                 }
-               
+
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.Write(8 - i + " ");
                 Console.ForegroundColor = x;
@@ -89,7 +89,6 @@ namespace xadrez_console
         {
             ConsoleColor fundoOriginal = Console.BackgroundColor;
             ConsoleColor fundoModificado = ConsoleColor.DarkGray;
-            ConsoleColor borda = ConsoleColor.Black;
 
             ConsoleColor aux = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.Red;
@@ -116,6 +115,7 @@ namespace xadrez_console
                     imprimirPeca(tab.peca(i, j));
                     Console.BackgroundColor = fundoOriginal;
                 }
+
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.Write(8 - i + " ");
                 Console.ForegroundColor = x;
