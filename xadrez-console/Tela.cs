@@ -46,7 +46,7 @@ namespace xadrez_console
 
         public static void imprimirConjunto(HashSet<Peca> conjunto)
         {
-            Console.Write("[" + "");
+            Console.Write("[");
             foreach (Peca x in conjunto)
             {
                 Console.Write(x + " ");
